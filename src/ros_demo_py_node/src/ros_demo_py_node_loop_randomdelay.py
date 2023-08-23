@@ -1,8 +1,6 @@
+#!/usr/bin/env python
 import rospy
 import random
-
-
-
 
 if __name__ == "__main__":
     rospy.init_node("ROSPY_SpinOnce_Loop_random_node")
