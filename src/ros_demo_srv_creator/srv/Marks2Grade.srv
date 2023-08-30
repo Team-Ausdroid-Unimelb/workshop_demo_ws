@@ -1,0 +1,5 @@
+# input is a mark between 0-100
+float32 marks
+---
+# etc, h1, h2A...
+string grade
