@@ -15,7 +15,7 @@ void chatterCallback(ros::NodeHandle &nh, const std_msgs::String::ConstPtr& msg)
   // }
   // else
   // {
-  //   d=-1;
+  //   d=-3;
   // }
   ROS_INFO("rosparam 'test_param' is [%d]. I heard: [%s]", d,msg->data.c_str());
 }
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
    * on a given topic.  This invokes a call to the ROS
    * master node, which keeps a registry of who is publishing and who
    * is subscribing.  Messages are passed to a callback function, here
-   * called chatterCallback.  subscribe() returns a Subscriber object that you
+   * called chatterCallback.  subscribe() returns a Subscriber object that youworkshops/workshop_ws/src/ros_demo_04_param_pub workshops/workshop_ws/src/ros_demo_04_param_sub
    * must hold on to until you want to unsubscribe.  When all copies of the Subscriber
    * object go out of scope, this callback will automatically be unsubscribed from
    * this topic.

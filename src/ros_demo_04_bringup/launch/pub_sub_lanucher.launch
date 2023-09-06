@@ -1,0 +1,72 @@
+<launch>
+    
+
+    <!-- need to set subst_value to True to allow substitution
+    There is no value attribute in rosparam -->
+    <arg name="input_param" default = "-3"/>
+    <arg name="assignments" default = "30"/>
+    <arg name="exam" default="50"/>
+
+    <rosparam param = "test_param" subst_value="true">$(arg input_param)</rosparam>
+
+
+    <!-- <rosparam param = "test_param" subst_value="True">$(eval input_param*3)</rosparam> -->
+
+    <!-- <rosparam command= "load" file="$(find ros_demo_04_param_sub)/config/test_param.yaml" />  -->
+    <!-- <rosparam>
+        test_param: 8
+    </rosparam> -->
+    <!-- <remap from="testing_topic" to="hello_topic"/> -->
+    <!-- the python script need to be chmod +x becoming runable scripts -->
+    <node pkg="ros_demo_04_param_pub" type="string_publisher.py" name="string_publisher_test" output="screen">
+        <param name="local_param" type="str" value="testing"/>
+        <remap from="testing_topic" to="hello_topic"/>
+    </node>
+    
+    <node pkg="ros_demo_04_param_sub" type="ros_demo_04_param_sub_node" name="ros_demo_04_param_sub_node_test" output="screen"/>
+
+    <!-- <group>
+        <remap from="testing_topic" to="hello_topic"/> 
+        <node pkg="ros_demo_04_param_pub" type="string_publisher.py" name="string_publisher_test" output="screen">
+        </node>
+        
+        <node pkg="ros_demo_04_param_sub" type="ros_demo_04_param_sub_node" name="ros_demo_04_param_sub_node_test" output="screen"/>
+    </group> -->
+
+    
+    <!-- <rosparam>
+        /group1/test_param: 999
+    </rosparam>  -->
+    <!-- <group ns="group1">
+        <remap from="testing_topic" to="hello_topic"/> 
+        <rosparam>
+            test_param: 999
+        </rosparam> 
+        <node pkg="ros_demo_04_param_pub" type="string_publisher.py" name="string_publisher_test" output="screen"/>
+        <node pkg="ros_demo_04_param_sub" type="ros_demo_04_param_sub_node" name="ros_demo_04_param_sub_node_test" output="screen"/>
+    </group>
+    
+    <group ns="group2">
+        <remap from="testing_topic" to="hello_topic"/> 
+        
+        <rosparam>
+            test_param: 2
+        </rosparam> 
+        <node pkg="ros_demo_04_param_pub" type="string_publisher.py" name="string_publisher_test" output="screen"/>
+        <node pkg="ros_demo_04_param_sub" type="ros_demo_04_param_sub_node" name="ros_demo_04_param_sub_node_test" output="screen"/>
+    </group> -->
+
+    <!-- this part is not working -->
+    <!-- <remap from="/group2/hello_topic" to="/group1/hello_topic"/>  -->
+
+    <!-- <include file="$(find ros_demo_04_bringup)/launch/service_launcher.launch" pass_all_args = "true" /> -->
+
+    <!-- <include file="$(find ros_demo_04_bringup)/launch/service_launcher.launch" pass_all_args = "true" ns='ns1' /> 
+    <include file="$(find ros_demo_04_bringup)/launch/service_launcher.launch" pass_all_args = "true" ns="ns2" />  -->
+
+    <!-- <include file="$(find ros_demo_04_bringup)/launch/service_launcher.launch">
+        <arg name="assignments" value = "$(arg assignments)"/>
+        <arg name="exam" default="$(arg exam)"/>
+    </include> -->
+
+</launch>

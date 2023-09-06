@@ -1,0 +1,19 @@
+<launch>
+    
+
+    <!-- need to set subst_value to True to allow substitution
+    There is no value attribute in rosparam -->
+    <arg name="assignments" default = "40"/>
+    <arg name="exam" default="60"/>
+
+    <!-- the python script need to be chmod +x becoming runable scripts -->
+    <node pkg="ros_demo_03_using_srv" type="marks2grade_client_node.py" name="service_client_node" output="screen" args="$(eval assignments+exam)">
+
+    </node>
+
+
+    
+    <node pkg="ros_demo_03_using_srv" type="marks2grade_server_node" name="service_server_node" output="screen"/>
+    <!-- <rosparam param = "test_param">5</rosparam> -->
+
+</launch>

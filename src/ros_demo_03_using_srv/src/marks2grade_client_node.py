@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
     # without the init, no ros log will get printed
     rospy.init_node("marks2fgrade_client_node")
-    if len(sys.argv) == 2:
+    if len(sys.argv) >= 2:
         marks = float(sys.argv[1])
     else:
         rospy.logerr("need exactly one argument for marks")
