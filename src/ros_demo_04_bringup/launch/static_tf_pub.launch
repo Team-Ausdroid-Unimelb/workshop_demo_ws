@@ -1,0 +1,9 @@
+<launch>
+    
+
+
+    <arg name="parent_frame_id" default = "my_frame"/>
+    <arg name="child_frame_id" default = "my_frame"/>
+    <node pkg="tf" type="static_transform_publisher" name="static_tf_publisher" args="2 0 0 0 0 0 $(arg parent_frame_id) $(arg child_frame_id) 100"/>
+
+</launch>

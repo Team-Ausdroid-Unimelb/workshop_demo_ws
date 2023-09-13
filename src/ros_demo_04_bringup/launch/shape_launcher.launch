@@ -1,0 +1,15 @@
+<launch>
+    
+
+
+    <arg name="namespace" default = "new"/>
+    <node pkg="ros_demo_05_visualization" type="ros_demo_05_visualization_node" name="marker_publisher1" output="screen"/>
+
+    <node pkg="ros_demo_05_visualization" type="ros_demo_05_visualization_ns_node" name="marker_publisher" output="screen" ns="$(arg namespace)"/>
+
+    <include file="$(find ros_demo_04_bringup)/launch/static_tf_pub.launch">
+        <arg name="parent_frame_id" value = "my_frame"/>
+        <arg name="child_frame_id" value = "$(arg namespace)/my_frame"/>
+    </include>
+
+</launch>
